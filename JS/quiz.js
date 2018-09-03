@@ -48,7 +48,7 @@
   //問題文と選択肢を表示する
   let setQuiz = () => {
     isAnswered = false;
-    question.textContent = quizData[currentNum].q;
+    question.textContent = "問題" + (currentNum + 1) + ". " + quizData[currentNum].q;
     shuffledAnswers = shuffle(quizData[currentNum].a.slice());//シャッフルされたあとquizData[currentNum].aにも上書きされちゃうからslice()でコピーを作りそれをシャッフルして返す
     explain.style.display = "none";
     for(let i = 0; i < shuffledAnswers.length; i++){
@@ -63,17 +63,23 @@
     for(let i = 0; i < answer_option.length; i++){
       answer_option[i].addEventListener('click', function() {
         checkAnswer(this);
+      
+        let scrollDown = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        window.scroll(0, scrollDown);
       });
     }
-    next_btn.addEventListener('click', ()=>{
 
+    next_btn.addEventListener('click', ()=>{
       if(currentNum === quizData.length){
+        let scrollUp = document.documentElement.clientHeight - document.documentElement.scrollHeight;
+        window.scroll(0, scrollUp);
         result.classList.add('show');
         scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
       }else{
         setQuiz();
       }
     });
+
   }
 
   const checkAnswer = (node) => {
