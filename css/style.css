@@ -1,12 +1,14 @@
 html{
-  min-height: 100%;
-  position: relative;
+  height: 100%;
+  
 }
 body {
   font-family: 'Hiragino Maru Gothic Pro','ヒラギノ丸ゴ Pro W4', sans-serif;
   margin: 0;
   padding: 0;
-  margin-bottom: 3em;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 ul{
   list-style: none;
@@ -50,13 +52,7 @@ header{
   background-color: #fff;
   padding: 160px 0 70px 0;
   overflow: hidden;
-}
-
-/* ----------------------------------
-              main
------------------------------------*/
-main{
-
+  flex: 1;
 }
 
 /* ----------------------------------
@@ -69,9 +65,6 @@ main{
   padding: 10px 20px;
   background-color: #ffc6e2;
 }
-/* .question span{
-  border-right: solid 1px;
-} */
 .frame{
   border-radius: 15px;
 }
@@ -118,6 +111,7 @@ main{
 #next_btn:hover{
   opacity: .7;
 }
+
 /* ----------------------------------
               result
 -----------------------------------*/
@@ -135,30 +129,22 @@ text-align: center;
 box-shadow: 0 0 2px rgba(0, 0, 0, 1.0);
 transition: 0.4s cubic-bezier(0.01, 0.88, 1, 1);
 }
-
 #result p{
 font-size: 33px;
 }
-
 #result a{
 display: block;
 color: #000;
 margin: 10px 30px;
 }
-
 #result.show{
 top: 200px;
 }
-
 
 /* ----------------------------------
               footer
 -----------------------------------*/
 footer{
-  width: 100%;
-  bottom: 0;
-  height: 4em;
-  position: absolute;
   background-color: #6d767b;
   color: #fff;
   padding: 15px;
