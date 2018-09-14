@@ -1,16 +1,17 @@
 (()=>{
+
   'use strict';
 
   const question = document.querySelector('#question > h1');
-  const answer_option = document.querySelectorAll('#answer_option > ul > li');
+  const answer_option = document.querySelectorAll('#answer_option > ul > li > a');
   const explain = document.getElementById('explain');
   const explain_sentens = document.querySelector('#explain > p');
-  const next_btn = document.getElementById('next_btn');
+  const next_btn = document.querySelector('#next_btn > a');
   const result = document.getElementById('result');
   const scoreLabel = document.querySelector('#result > p');
 
   let shuffledAnswers;
-
+  
   const quizDataAll = [
     {q: '与那国島の方言で「ありがとう」はなんという？', a: ['ふがらっさ〜','てんきゅ〜','かむさ〜'], e: '与那国の方言でありがとうは「ふがらっさー」と言います。ネイティブの発音はぜひ現地で聞いてみてね〜♪'},
     {q: '長命草を食べるとどうなるといわれている？', a: ['長生きできる','与那国馬になれる','空を飛べる'], e: '長命草には豊富な栄養素が含まれています。皆さんも摂取して健康長寿！'},
@@ -63,16 +64,11 @@
     for(let i = 0; i < answer_option.length; i++){
       answer_option[i].addEventListener('click', function() {
         checkAnswer(this);
-      
-        let scrollDown = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        window.scroll(0, scrollDown);
       });
     }
 
     next_btn.addEventListener('click', ()=>{
       if(currentNum === quizData.length){
-        let scrollUp = document.documentElement.clientHeight - document.documentElement.scrollHeight;
-        window.scroll(0, scrollUp);
         result.classList.add('show');
         scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
       }else{
