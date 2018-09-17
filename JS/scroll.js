@@ -5,7 +5,7 @@ $(document).ready(() => {
     let target = $(href == '#' || href === '' ? 'html' : href);
     let position = target.offset().top;
 
-    $('html,body').animate({scrollTop : position}, 600);
+    $('html,body').animate({scrollTop : position}, 800);
 
     return false;
   });

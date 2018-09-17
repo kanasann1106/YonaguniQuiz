@@ -212,8 +212,8 @@ footer{
     font-size: 25px;
   }
   #result a{
-    margin: 10px 20px;
-    padding: 10px 20px;
+    margin: 10px 0px;
+    padding: 10px 0px;
   }
   footer{
     padding: 5px;

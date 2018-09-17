@@ -1,17 +1,17 @@
 (()=>{
-
   'use strict';
 
   const question = document.querySelector('#question > h1');
   const answer_option = document.querySelectorAll('#answer_option > ul > li > a');
   const explain = document.getElementById('explain');
+  const t_f = document.querySelector('#explain > h1');
   const explain_sentens = document.querySelector('#explain > p');
   const next_btn = document.querySelector('#next_btn > a');
   const result = document.getElementById('result');
   const scoreLabel = document.querySelector('#result > p');
 
   let shuffledAnswers;
-  
+
   const quizDataAll = [
     {q: '与那国島の方言で「ありがとう」はなんという？', a: ['ふがらっさ〜','てんきゅ〜','かむさ〜'], e: '与那国の方言でありがとうは「ふがらっさー」と言います。ネイティブの発音はぜひ現地で聞いてみてね〜♪'},
     {q: '長命草を食べるとどうなるといわれている？', a: ['長生きできる','与那国馬になれる','空を飛べる'], e: '長命草には豊富な栄養素が含まれています。皆さんも摂取して健康長寿！'},
@@ -79,21 +79,22 @@
   }
 
   const checkAnswer = (node) => {
+
     if(isAnswered){
       return;
     }
     isAnswered = true;
     if(node.textContent === quizData[currentNum].a[0]){
-      node.innerHTML += "<span style='margin-left: 50px;'>正解！！</span>";
+      t_f.innerHTML = "<span style='color:#94c168;'>正解！！</span>";
       node.classList.add('correct');
       score++;
     }else{
-      node.innerHTML += "<span style='margin-left: 50px;'>不正解</span>";
+      t_f.innerHTML = "<span style='color:#ff3712;'>不正解。。</span>";
       node.classList.add('wrong');
     }
     explain.style.display = "block";
-    explain_sentens.textContent = quizData[currentNum].e;
-
+    explain_sentens.innerHTML = "<span style='font-size:20px; color: black;'>解説: </span>"+quizData[currentNum].e;
+    
     currentNum++;
   }
 
