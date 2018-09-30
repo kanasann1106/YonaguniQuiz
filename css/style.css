@@ -32,12 +32,30 @@ header{
   position: fixed;
   z-index: 9999;
   width: 100%;
+  display: flex;
 }
 .header_logo{
   font-size: 36px;
   font-weight: bold;
-  margin: 18px 40px;
+  margin: 12px 40px;
   color: #fff;
+}
+.menu{
+  margin: auto;
+}
+.menu ul{
+  display: flex;
+}
+.menu li{
+  padding: 0 20px;
+}
+.menu li +li{
+  border-left: 2px solid #999;
+  padding: 0 20px
+
+}
+.menu a:hover{
+  opacity: .7;
 }
 #today{
   float: right;
