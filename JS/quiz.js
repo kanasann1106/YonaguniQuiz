@@ -1,6 +1,7 @@
 
 (()=>{
   'use strict';
+  const menu = document.getElementsByClassName('menu');
   const question = document.querySelector('#question > h1');
   const answer_option = document.querySelectorAll('#answer_option > ul > li > a');
   const explain = document.getElementById('explain');
@@ -10,12 +11,16 @@
   const result = document.getElementById('result');
   const scoreLabel = document.querySelector('#result > p');
 
+
   let shuffledAnswers;
   let shuffleQuizData = [];//quizDataAllをシャッフル
   let quizData = [];//表示するクイズ(５問)
   let currentNum = 0;
   let isAnswered;
   let score = 0;
+
+  let foods = quizDataAll[0].food;
+
 
   //フィッシャー・イェーツのシャッフルのアルゴリズムを利用
   const shuffle = (arr) => {
@@ -27,9 +32,15 @@
     }
     return arr;
   }
+  console.log(menu[0]);
+  //console.log(document.getElementsByClassName('food'));
+  
+  //ヘッダーメニューの選択
+  
+  
 
   //クイズ配列をシャッフルして5問取り出す
-  shuffleQuizData = shuffle(quizDataAll.slice());
+  shuffleQuizData = shuffle(foods.slice());
   quizData = (shuffleQuizData.slice(0,5));
   
   //問題文と選択肢を表示する
