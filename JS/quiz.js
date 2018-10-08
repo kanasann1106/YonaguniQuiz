@@ -19,9 +19,6 @@
   let isAnswered;
   let score = 0;
 
-  let foods = quizDataAll[0].food;
-
-
   //フィッシャー・イェーツのシャッフルのアルゴリズムを利用
   const shuffle = (arr) => {
     for(let i = arr.length - 1; i >= 0; i--){
@@ -33,11 +30,18 @@
     return arr;
   }
   console.log(menu[0]);
-  //console.log(document.getElementsByClassName('food'));
+  console.log(document.getElementsByClassName('food'));
+  console.log(document.getElementById('food'));
+
   
   //ヘッダーメニューの選択
-  
-  
+  document.getElementById('food').addEventListener('click',function(){
+        setQuiz();
+        setEvents();
+
+  });
+
+  let foods = quizDataAll[0].food;
 
   //クイズ配列をシャッフルして5問取り出す
   shuffleQuizData = shuffle(foods.slice());
@@ -95,7 +99,6 @@
     currentNum++;
   }
 
-  setQuiz();
-  setEvents();
+
 
 })();
