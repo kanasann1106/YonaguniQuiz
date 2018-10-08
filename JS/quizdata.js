@@ -1,4 +1,4 @@
-const quizDataAll = [
+const quizCategory = [
     {food: [
         {q: '長命草を食べるとどうなるといわれている？', a: ['長生きできる','与那国馬になれる','空を飛べる'], e: '長命草には豊富な栄養素が含まれています。皆さんも摂取して健康長寿！'},
         {q: '唯一与那国島でしか製造されていない泡盛の種類は何でしょう？', a: ['花酒','木酒','土酒'], e: '花酒はアルコール度数が60％以上の泡盛で、日本で製造されているお酒の中では1番アルコール度数が高いお酒です。'},
@@ -24,4 +24,21 @@ const quizDataAll = [
     ]}
 
   ];
+
+let quizDataAll = quizCategory[0].food.concat(quizCategory[1].creature).concat(quizCategory[2].history).concat(quizCategory[3].knowledge);
+
+// let quizKeys = [];
+// for(var i = 0; i < quizCategory.length ; i++ ) {
+//     quizKeys.push(Object.keys(quizCategory[i])); 
+// }
+
+// let quizDataAll = [];
+// for (var i = 0; i < quizCategory.length ; i ++) {
+//     quizCategory.forEach(function(value){
+//         quizDataAll.push(value);
+//     });
+//     //quizDataAll.push(quizCategory[i].quizKeys[i]);
+// }
+
+
 
