@@ -1,4 +1,3 @@
-
 (()=>{
   'use strict';
   const menu = document.getElementsByClassName('menu');
@@ -30,25 +29,11 @@
     return arr;
   }
 
-  let test = quizDataAll[2].history;
-  let foods = quizDataAll[0].food;
-  
-  //ヘッダーメニューの選択
-  
-  document.getElementById('food').addEventListener('click',function(){
-        test = foods;
-         console.log(currentNum++);
-  });
+  let createAndSetQuiz = (quizDataAll) => {
+    //クイズ配列をシャッフルして5問取り出す
+    shuffleQuizData = shuffle(quizDataAll.slice());
+    quizData = (shuffleQuizData.slice(0,5));
 
-console.log(foods.slice());
-console.log(test);
-
-  
-
-  //クイズ配列をシャッフルして5問取り出す
-  shuffleQuizData = shuffle(test.slice());
-  quizData = (shuffleQuizData.slice(0,5));
-  
   //問題文と選択肢を表示する
   let setQuiz = () => {
     isAnswered = false;
@@ -70,7 +55,7 @@ console.log(test);
       });
     }
 
-    next_btn.addEventListener('click', ()=>{
+    next_btn.addEventListener('click', () => {
       if(currentNum === quizData.length){
         result.classList.add('show');
         scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
@@ -101,7 +86,19 @@ console.log(test);
     currentNum++;
   }
   
-  setQuiz();
-  setEvents();
-
+    setQuiz();
+    setEvents();
+  }
+   //ヘッダーメニューの選択
+  document.getElementById('food').addEventListener('click',function() {
+    quizDataAll = quizCategory[0].food;
+    createAndSetQuiz(quizDataAll);
+  });
+   document.getElementById('creature').addEventListener('click',function() {
+    quizDataAll = quizCategory[1].creature;
+    createAndSetQuiz(quizDataAll);
+  });   
+  
+  // デフォルト (最初の読み込み時)
+  createAndSetQuiz(quizDataAll);
 })();
