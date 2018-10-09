@@ -29,11 +29,6 @@
     return arr;
   }
 
-  let test = quizDataAll[2].history;
-  let foods = quizDataAll[0].food;
-  
-  
-
   let createAndSetQuiz = (quizDataAll) => {
     //クイズ配列をシャッフルして5問取り出す
     shuffleQuizData = shuffle(quizDataAll.slice());
@@ -60,7 +55,7 @@
       });
     }
 
-    next_btn.addEventListener('click', ()=>{
+    next_btn.addEventListener('click', () => {
       if(currentNum === quizData.length){
         result.classList.add('show');
         scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
@@ -95,11 +90,11 @@
     setEvents();
   }
    //ヘッダーメニューの選択
-  document.getElementById('food').addEventListener('click',function(){
+  document.getElementById('food').addEventListener('click',function() {
     quizDataAll = quizCategory[0].food;
     createAndSetQuiz(quizDataAll);
   });
-   document.getElementById('creature').addEventListener('click',function(){
+   document.getElementById('creature').addEventListener('click',function() {
     quizDataAll = quizCategory[1].creature;
     createAndSetQuiz(quizDataAll);
   });   
