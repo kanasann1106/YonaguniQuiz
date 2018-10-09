@@ -1,4 +1,3 @@
-
 (()=>{
   'use strict';
   const menu = document.getElementsByClassName('menu');
@@ -30,79 +29,78 @@
     return arr;
   }
 
-  let createAndSetQuiz = (quizDataAll) => {
-    //クイズ配列をシャッフルして5問取り出す
-    shuffleQuizData = shuffle(quizDataAll.slice());
-    quizData = (shuffleQuizData.slice(0,5));
+  let test = quizDataAll[2].history;
+  let foods = quizDataAll[0].food;
   
-    //問題文と選択肢を表示する
-    let setQuiz = () => {
-      isAnswered = false;
-      question.textContent = "問題" + (currentNum + 1) + ". " + quizData[currentNum].q;
-      shuffledAnswers = shuffle(quizData[currentNum].a.slice());//シャッフルされたあとquizData[currentNum].aにも上書きされちゃうからslice()でコピーを作りそれをシャッフルして返す
-      explain.style.display = "none";
-      for(let i = 0; i < shuffledAnswers.length; i++){
-      answer_option[i].classList.remove('correct');
-      answer_option[i].classList.remove('wrong');
-      answer_option[i].textContent = shuffledAnswers[i];
-      }
-    }
-
-    //回答を選択した時の処理
-    const setEvents = () => {
-      for(let i = 0; i < answer_option.length; i++){
-        answer_option[i].addEventListener('click', function() {
-          checkAnswer(this);
-        });
-      }
-
-      next_btn.addEventListener('click', ()=>{
-        if(currentNum === quizData.length){
-          result.classList.add('show');
-          scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
-        }else{
-          setQuiz();
-        }
-      });
-
-    }
-
-    const checkAnswer = (node) => {
-
-      if(isAnswered){
-        return;
-      }
-      isAnswered = true;
-      if(node.textContent === quizData[currentNum].a[0]){
-        t_f.innerHTML = "<span style='color:#94c168;'>正解！！</span>";
-        node.classList.add('correct');
-        score++;
-      }else{
-        t_f.innerHTML = "<span style='color:#ff3712;'>不正解。。</span>";
-        node.classList.add('wrong');
-      }
-      explain.style.display = "block";
-      explain_sentens.innerHTML = "<span style='font-size:20px; color: black;'>解説: </span>"+quizData[currentNum].e;
-      
-      currentNum++;
-    }
-
-    setQuiz();
-    setEvents();
-  }
-
-
   //ヘッダーメニューの選択
+  
   document.getElementById('food').addEventListener('click',function(){
-    quizDataAll = quizCategory[0].food;
-    createAndSetQuiz(quizDataAll);
+        test = foods;
+         console.log(currentNum++);
   });
 
-  document.getElementById('creature').addEventListener('click',function(){
-    quizDataAll = quizCategory[1].creature;
-    createAndSetQuiz(quizDataAll);
-  });   
+console.log(foods.slice());
+console.log(test);
+
   
-  // デフォルト (最初の読み込み時)
-  createAndSetQuiz(quizDataAll);
+
+  //クイズ配列をシャッフルして5問取り出す
+  shuffleQuizData = shuffle(test.slice());
+  quizData = (shuffleQuizData.slice(0,5));
+  
+  //問題文と選択肢を表示する
+  let setQuiz = () => {
+    isAnswered = false;
+    question.textContent = "問題" + (currentNum + 1) + ". " + quizData[currentNum].q;
+    shuffledAnswers = shuffle(quizData[currentNum].a.slice());//シャッフルされたあとquizData[currentNum].aにも上書きされちゃうからslice()でコピーを作りそれをシャッフルして返す
+    explain.style.display = "none";
+    for(let i = 0; i < shuffledAnswers.length; i++){
+    answer_option[i].classList.remove('correct');
+    answer_option[i].classList.remove('wrong');
+    answer_option[i].textContent = shuffledAnswers[i];
+    }
+  }
+
+  //回答を選択した時の処理
+  const setEvents = () => {
+    for(let i = 0; i < answer_option.length; i++){
+      answer_option[i].addEventListener('click', function() {
+        checkAnswer(this);
+      });
+    }
+
+    next_btn.addEventListener('click', ()=>{
+      if(currentNum === quizData.length){
+        result.classList.add('show');
+        scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
+      }else{
+        setQuiz();
+      }
+    });
+
+  }
+
+  const checkAnswer = (node) => {
+
+    if(isAnswered){
+      return;
+    }
+    isAnswered = true;
+    if(node.textContent === quizData[currentNum].a[0]){
+      t_f.innerHTML = "<span style='color:#94c168;'>正解！！</span>";
+      node.classList.add('correct');
+      score++;
+    }else{
+      t_f.innerHTML = "<span style='color:#ff3712;'>不正解。。</span>";
+      node.classList.add('wrong');
+    }
+    explain.style.display = "block";
+    explain_sentens.innerHTML = "<span style='font-size:20px; color: black;'>解説: </span>"+quizData[currentNum].e;
+    
+    currentNum++;
+  }
+  
+  setQuiz();
+  setEvents();
+
 })();
