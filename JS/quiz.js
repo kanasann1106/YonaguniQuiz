@@ -29,22 +29,24 @@
     }
     return arr;
   }
-  console.log(menu[0]);
-  console.log(document.getElementsByClassName('food'));
-  console.log(document.getElementById('food'));
 
+  let test = quizDataAll[2].history;
+  let foods = quizDataAll[0].food;
   
   //ヘッダーメニューの選択
+  
   document.getElementById('food').addEventListener('click',function(){
-        setQuiz();
-        setEvents();
-
+        test = foods;
+         console.log(currentNum++);
   });
 
-  let foods = quizDataAll[0].food;
+console.log(foods.slice());
+console.log(test);
+
+  
 
   //クイズ配列をシャッフルして5問取り出す
-  shuffleQuizData = shuffle(foods.slice());
+  shuffleQuizData = shuffle(test.slice());
   quizData = (shuffleQuizData.slice(0,5));
   
   //問題文と選択肢を表示する
@@ -98,7 +100,8 @@
     
     currentNum++;
   }
-
-
+  
+  setQuiz();
+  setEvents();
 
 })();
