@@ -1,14 +1,14 @@
 (()=>{
   'use strict';
-  const menu = document.getElementsByClassName('menu');
-  const question = document.querySelector('#question > h1');
+  const MENU = document.getElementsByClassName('menu');
+  const QUESTION = document.querySelector('#question > h1');
   const answer_option = document.querySelectorAll('#answer_option > ul > li > a');
-  const explain = document.getElementById('explain');
-  const t_f = document.querySelector('#explain > h1');
-  const explain_sentens = document.querySelector('#explain > p');
-  const next_btn = document.querySelector('#next_btn > a');
-  const result = document.getElementById('result');
-  const scoreLabel = document.querySelector('#result > p');
+  const EXPLAIN = document.getElementById('explain');
+  const TRUE_FALSE = document.querySelector('#explain > h1');
+  const EXPLAIN_SENTENS = document.querySelector('#explain > p');
+  const NEXT_BTN = document.querySelector('#next_btn > a');
+  const RESULT = document.getElementById('result');
+  const SCORE_LABEL = document.querySelector('#result > p');
 
 
   let shuffledAnswers;
@@ -19,7 +19,7 @@
   let score = 0;
 
   //フィッシャー・イェーツのシャッフルのアルゴリズムを利用
-  const shuffle = (arr) => {
+  const SHUFFLE = (arr) => {
     for(let i = arr.length - 1; i >= 0; i--){
       let j = Math.floor(Math.random() * (i + 1));
       let tmp = arr[i];
@@ -31,15 +31,15 @@
 
   let createAndSetQuiz = (quizDataAll) => {
     //クイズ配列をシャッフルして5問取り出す
-    shuffleQuizData = shuffle(quizDataAll.slice());
+    shuffleQuizData = SHUFFLE(quizDataAll.slice());
     quizData = (shuffleQuizData.slice(0,5));
 
   //問題文と選択肢を表示する
   let setQuiz = () => {
     isAnswered = false;
-    question.textContent = "問題" + (currentNum + 1) + ". " + quizData[currentNum].q;
-    shuffledAnswers = shuffle(quizData[currentNum].a.slice());//シャッフルされたあとquizData[currentNum].aにも上書きされちゃうからslice()でコピーを作りそれをシャッフルして返す
-    explain.style.display = "none";
+    QUESTION.textContent = "問題" + (currentNum + 1) + ". " + quizData[currentNum].q;
+    shuffledAnswers = SHUFFLE(quizData[currentNum].a.slice());//シャッフルされたあとquizData[currentNum].aにも上書きされちゃうからslice()でコピーを作りそれをシャッフルして返す
+    EXPLAIN.style.display = "none";
     for(let i = 0; i < shuffledAnswers.length; i++){
     answer_option[i].classList.remove('correct');
     answer_option[i].classList.remove('wrong');
@@ -48,17 +48,17 @@
   }
 
   //回答を選択した時の処理
-  const setEvents = () => {
+  const SET_EVENTS = () => {
     for(let i = 0; i < answer_option.length; i++){
       answer_option[i].addEventListener('click', function() {
-        checkAnswer(this);
+        CHECK_ANSWER(this);
       });
     }
 
-    next_btn.addEventListener('click', () => {
+    NEXT_BTN.addEventListener('click', () => {
       if(currentNum === quizData.length){
-        result.classList.add('show');
-        scoreLabel.textContent = '正解数：' + score + '/' + quizData.length;
+        RESULT.classList.add('show');
+        SCORE_LABEL.textContent = '正解数：' + score + '/' + quizData.length;
       }else{
         setQuiz();
       }
@@ -66,28 +66,28 @@
 
   }
 
-  const checkAnswer = (node) => {
+  const CHECK_ANSWER = (node) => {
 
     if(isAnswered){
       return;
     }
     isAnswered = true;
     if(node.textContent === quizData[currentNum].a[0]){
-      t_f.innerHTML = "<span style='color:#94c168;'>正解！！</span>";
+      TRUE_FALSE.innerHTML = "<span style='color:#94c168;'>正解！！</span>";
       node.classList.add('correct');
       score++;
     }else{
-      t_f.innerHTML = "<span style='color:#ff3712;'>不正解。。</span>";
+      TRUE_FALSE.innerHTML = "<span style='color:#ff3712;'>不正解。。</span>";
       node.classList.add('wrong');
     }
-    explain.style.display = "block";
-    explain_sentens.innerHTML = "<span style='font-size:20px; color: black;'>解説: </span>"+quizData[currentNum].e;
+    EXPLAIN.style.display = "block";
+    EXPLAIN_SENTENS.innerHTML = "<span style='font-size:20px; color: black;'>解説: </span>"+quizData[currentNum].e;
     
     currentNum++;
   }
   
     setQuiz();
-    setEvents();
+    SET_EVENTS();
   }
    //ヘッダーメニューの選択
   document.getElementById('food').addEventListener('click',function() {
