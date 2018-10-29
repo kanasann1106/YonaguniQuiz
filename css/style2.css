@@ -1,0 +1,270 @@
+html{
+  height: 100%;
+  
+}
+*{
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Hiragino Maru Gothic Pro','ヒラギノ丸ゴ Pro W4', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+p{
+  line-height: 36px;
+  font-size: 18px;
+}
+
+/* ----------------------------------
+              shared
+-----------------------------------*/
+.color-white{
+  color: white;
+}
+
+/* ----------------------------------
+              header
+-----------------------------------*/
+header{
+  background-color: #80cee0;
+  height: 80px;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  display: flex;
+}
+.header_logo{
+  font-size: 36px;
+  font-weight: bold;
+  margin: 12px 40px;
+}
+#menu{
+  margin: auto;
+}
+#menu ul{
+  display: flex;
+}
+#menu li{
+  padding: 0 20px;
+  cursor: pointer;
+}
+#menu li +li{
+  border-left: 2px solid #999;
+  padding: 0 20px
+
+}
+#menu li:hover{
+  opacity: .7;
+}
+#today{
+  float: right;
+  margin: 33px 70px;
+}
+
+.wrapper{
+  width: 70%;
+  margin: auto;
+  background-color: #fff;
+  padding: 150px 0 20px 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* ----------------------------------
+              quize
+-----------------------------------*/
+#quiz{
+  color: #404040;
+}
+.question{
+  padding: 10px 20px;
+  background-color: #ffc6e2;
+}
+.frame{
+  border-radius: 15px;
+}
+.answer_item a{
+  margin: 20px 0;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #eaeaea;
+  color: #404040;
+  display: block;
+  border-radius: 15px;
+}
+.answer_item:hover{
+  opacity: .7;
+}
+#answer_option a.correct{
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+  font-weight: bold;
+  font-size: 18px;
+}
+#answer_option a.wrong {
+  background: #f8d8da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  font-weight: bold;
+}
+#explain{
+  border: solid 7px #ddffbc;
+  padding: 0 20px;
+}
+#explain h1{
+  font-size: 25px;
+  color: #94c168;
+}
+#next_btn a,#result a{
+  background-color: #ddffbc;
+  color: #404040;
+  padding: 10px 0px;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 3px 0 #b5da91;
+  display: block;
+}
+#next_btn:hover{
+  opacity: .7;
+}
+
+
+/* ----------------------------------
+              result
+-----------------------------------*/
+#result {
+position: absolute;
+top: -500px;
+left: 0;
+right: 0;
+margin: 0 auto;
+background-color: #ebfff1;
+width: 300px;
+border-radius: 20px;
+padding: 50px;
+text-align: center;
+box-shadow: 0 0 2px rgba(0, 0, 0, 1.0);
+transition: 0.4s cubic-bezier(0.01, 0.88, 1, 1);
+}
+#result p{
+font-size: 33px;
+}
+#result a{
+display: block;
+color: #000;
+margin: 10px 20px;
+}
+#result.show{
+top: 200px;
+}
+
+/* ----------------------------------
+              footer
+-----------------------------------*/
+footer{
+  background-color: #6d767b;
+  padding: 10px;
+}
+.footer_logo{
+  font-size: 20px;
+  text-align: center;
+}
+.footer_logo a:hover{
+  border-bottom: solid 2px #fff;
+  opacity: .6;
+}
+.copyright{
+  text-align: center;
+}
+
+/* ----------------------------------
+              responsive
+-----------------------------------*/
+@media screen and (max-width: 711px){
+  p{
+    line-height: 30px;
+    font-size: 16px;
+  }
+  .wrapper{
+    width: 90%;
+    padding-top: 90px;
+    font-size: 14px;
+  }
+  header{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header_logo{
+    font-size: 23px;
+  }
+  /*#today{
+    font-size: 14px;
+    text-align: center;
+    float:none;
+    margin: auto;
+  }*/
+  .question{
+    padding: 1px 20px;
+  }
+  #explain{
+    font-size: 14px;
+  }
+  #explain h1{
+    font-size: 20px;
+    margin:5px 0px;
+  }
+  #explain p{
+    margin: auto;
+  }
+  #next_btn{
+    margin: 5px 40px 13px 40px;
+  }
+  #result{
+    width: 230px;
+    padding: 30px;
+  }
+  #result p{
+    font-size: 25px;
+  }
+  #result a{
+    margin: 10px 0px;
+    padding: 10px 0px;
+  }
+  footer{
+    padding: 5px;
+  }
+  .footer_logo{
+    font-size: 17px;
+  }
+  .copyright{
+    font-size: .8rem;
+  }
+}
+
+@media screen and (min-width: 686px) and (max-width: 1100px){
+  #next_btn{
+    margin: 20px 90px;
+  }
+}
+
+@media screen and (min-width: 1101px){
+  #next_btn{
+    margin: 40px 200px;
+  }
+}
