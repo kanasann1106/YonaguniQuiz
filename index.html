@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/style.css" type="text/css" >
+<title>与那国クイズ｜どなんメディア〜あなたに届け、与那国島の魅力〜</title>
+</head>
+
+<body>
+  <header>
+    <a href="" class="header_logo color-white"></a>
+    <div id="menu" class="color-white">
+      <ul>
+        <li v-for="menu in menus">{{menu}}</li>
+      </ul>
+    </div>
+  </header>
+  <div class="wrapper">
+    <main>
+      <article id="quiz">
+        <section class="question frame">
+          <h1>{{quizData}}</h1>
+        </section>
+        <section id="answer_option">
+          <ul>
+            <li class="answer_item">
+              <a href="#next_btn"></a>
+            </li>
+            <li class="answer_item">
+              <a href="#next_btn"></a>
+            </li>
+            <li class="answer_item">
+              <a href="#next_btn"></a>
+            </li>
+          </ul>
+        </section>
+        <section id="explain" class="frame">
+          <h1>解説 :</h1>
+          <p></p>
+          <div id="next_btn">
+            <a href="#">次へ</a>
+          </div>
+        </section>
+        <section id="result">
+          <p></p>
+          <a href="">もう1回やるよね？</a>
+        </section>
+      </article>
+    </main>
+  </div>
+  <footer>
+    <div class="footer_logo">
+      <a href="https://yonaguni-media.com" target="_blank">どなんメディア</a>
+    </div>
+    <div class="copyright color-white">
+      <small>Copyright © 2018 donan_media.</small>
+    </div>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="JS/scroll.js"></script>
+  <!-- <script type="text/javascript" src="JS/quizdata.js"></script> -->
+  <script type="text/javascript" src="JS/new_quiz.js"></script>
+  <!-- <script type="text/javascript" src="JS/quiz.js"></script> -->
+
+  <div id="app">
+      <span>{{random()}}</span>
+      </div>
+      <script>
+        new Vue({
+          el: '#app',
+          data: {
+            ary: ['1','2','3','4','5','6']
+          },
+          methods:{
+            'random': function(){
+              const rnd = Math.floor(Math.random() * this.ary.length);
+              return this.ary[rnd];
+            }
+          }
+        })
+      </script>
+  
+</body>
+
+</html>
